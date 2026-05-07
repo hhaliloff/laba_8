@@ -1,0 +1,254 @@
+мая 07, 2026 8:14:14 AM Main main
+INFO: Коллекция загружена из файла: C:\Users\fedor\IdeaProjects\laba_5\src\data.txt | элементов: 0
+мая 07, 2026 8:14:14 AM Main lambda$main$1
+INFO: Серверная консоль запущена. Команды: save, exit
+мая 07, 2026 8:14:14 AM Network.UDPServer start
+INFO: Сервер запущен на порту 5000
+мая 07, 2026 8:14:35 AM Network.UDPServer start
+INFO: Новое подключение от: /127.0.0.1:57677
+мая 07, 2026 8:14:35 AM Network.UDPServer start
+INFO: Получен запрос: команда='show'
+мая 07, 2026 8:14:35 AM Network.UDPServer start
+FINE: Начало обработки команды: show
+мая 07, 2026 8:14:35 AM Network.UDPServer start
+FINE: Обработка завершена: успех=true
+мая 07, 2026 8:14:35 AM Network.UDPServer start
+INFO: Ответ отправлен клиенту /127.0.0.1:57677 | успех=true | сообщение='Коллекция пуста.'
+мая 07, 2026 8:14:40 AM Network.UDPServer start
+INFO: Новое подключение от: /127.0.0.1:57677
+мая 07, 2026 8:14:40 AM Network.UDPServer start
+INFO: Получен запрос: команда='add_random'
+мая 07, 2026 8:14:40 AM Network.UDPServer start
+FINE: Начало обработки команды: add_random
+мая 07, 2026 8:14:40 AM Network.UDPServer start
+FINE: Обработка завершена: успех=true
+мая 07, 2026 8:14:40 AM Network.UDPServer start
+INFO: Ответ отправлен клиенту /127.0.0.1:57677 | успех=true | сообщение='Билет с рандомными полями успешно добавлен в коллекцию!'
+мая 07, 2026 8:14:44 AM Network.UDPServer start
+INFO: Новое подключение от: /127.0.0.1:57677
+мая 07, 2026 8:14:44 AM Network.UDPServer start
+INFO: Получен запрос: команда='add_random'
+мая 07, 2026 8:14:44 AM Network.UDPServer start
+FINE: Начало обработки команды: add_random
+мая 07, 2026 8:14:44 AM Network.UDPServer start
+FINE: Обработка завершена: успех=true
+мая 07, 2026 8:14:44 AM Network.UDPServer start
+INFO: Ответ отправлен клиенту /127.0.0.1:57677 | успех=true | сообщение='Билет с рандомными полями успешно добавлен в коллекцию!'
+мая 07, 2026 8:14:46 AM Network.UDPServer start
+INFO: Новое подключение от: /127.0.0.1:57677
+мая 07, 2026 8:14:46 AM Network.UDPServer start
+INFO: Получен запрос: команда='shuff;e'
+мая 07, 2026 8:14:46 AM Network.UDPServer start
+FINE: Начало обработки команды: shuff;e
+мая 07, 2026 8:14:46 AM Network.UDPServer start
+FINE: Обработка завершена: успех=false
+мая 07, 2026 8:14:46 AM Network.UDPServer start
+INFO: Ответ отправлен клиенту /127.0.0.1:57677 | успех=false | сообщение='Неизвестная команда: shuff;e'
+мая 07, 2026 8:14:50 AM Network.UDPServer start
+INFO: Новое подключение от: /127.0.0.1:57677
+мая 07, 2026 8:14:50 AM Network.UDPServer start
+INFO: Получен запрос: команда='shuffle'
+мая 07, 2026 8:14:50 AM Network.UDPServer start
+FINE: Начало обработки команды: shuffle
+мая 07, 2026 8:14:50 AM Network.UDPServer start
+FINE: Обработка завершена: успех=true
+мая 07, 2026 8:14:50 AM Network.UDPServer start
+INFO: Ответ отправлен клиенту /127.0.0.1:57677 | успех=true | сообщение='Коллекция перемешана!'
+мая 07, 2026 8:14:53 AM Network.UDPServer start
+INFO: Новое подключение от: /127.0.0.1:57677
+мая 07, 2026 8:14:53 AM Network.UDPServer start
+INFO: Получен запрос: команда='help'
+мая 07, 2026 8:14:53 AM Network.UDPServer start
+FINE: Начало обработки команды: help
+мая 07, 2026 8:14:53 AM Network.UDPServer start
+FINE: Обработка завершена: успех=true
+мая 07, 2026 8:14:53 AM Network.UDPServer start
+INFO: Ответ отправлен клиенту /127.0.0.1:57677 | успех=true | сообщение='Список команд:
+help : вывести справку по доступным командам
+info : вывести в стандартный поток вывода информацию о коллекции (тип, дата инициализации, количество элементов)
+show : вывести в стандартный поток вывода все элементы коллекции в строковом представлении
+add {element} : добавить новый элемент в коллекцию
+add_random [count] : добавить один или несколько случайных элементов
+update id {element} : обновить значение элемента коллекции, id которого равен заданному
+remove_by_id id : удалить элемент из коллекции по его id
+clear : очистить коллекцию
+save : сохранить коллекцию в файл
+execute_script file_name : считать и исполнить скрипт из указанного файла
+exit : завершить программу (с сохранением в файл на сервере)
+remove_last : удалить последний элемент из коллекции
+add_if_min {element} : добавить новый элемент в коллекцию, если его значение меньше, чем у наименьшего элемента этой коллекции
+shuffle : перемешать элементы коллекции в случайном порядке
+filter_less_than_venue venue : вывести элементы, значение поля venue которых меньше заданного
+filter_greater_than_venue venue : вывести элементы, значение поля venue которых больше заданного
+print_field_descending_price : вывести значения поля price всех элементов в порядке убывания'
+мая 07, 2026 8:16:04 AM Network.UDPServer start
+INFO: Новое подключение от: /127.0.0.1:57677
+мая 07, 2026 8:16:04 AM Network.UDPServer start
+INFO: Получен запрос: команда='filter_less_than_venue', аргумент='12'
+мая 07, 2026 8:16:04 AM Network.UDPServer start
+FINE: Начало обработки команды: filter_less_than_venue
+мая 07, 2026 8:16:04 AM Network.UDPServer start
+FINE: Обработка завершена: успех=true
+мая 07, 2026 8:16:04 AM Network.UDPServer start
+INFO: Ответ отправлен клиенту /127.0.0.1:57677 | успех=true | сообщение='Нет элементов с вместимостью меньшим, чем заданное.'
+мая 07, 2026 8:16:08 AM Network.UDPServer start
+INFO: Новое подключение от: /127.0.0.1:57677
+мая 07, 2026 8:16:08 AM Network.UDPServer start
+INFO: Получен запрос: команда='filter_less_than_venue1'
+мая 07, 2026 8:16:08 AM Network.UDPServer start
+FINE: Начало обработки команды: filter_less_than_venue1
+мая 07, 2026 8:16:08 AM Network.UDPServer start
+FINE: Обработка завершена: успех=false
+мая 07, 2026 8:16:08 AM Network.UDPServer start
+INFO: Ответ отправлен клиенту /127.0.0.1:57677 | успех=false | сообщение='Неизвестная команда: filter_less_than_venue1'
+мая 07, 2026 8:16:09 AM Network.UDPServer start
+INFO: Новое подключение от: /127.0.0.1:57677
+мая 07, 2026 8:16:09 AM Network.UDPServer start
+INFO: Получен запрос: команда='filter_less_than_venue', аргумент=' 1'
+мая 07, 2026 8:16:09 AM Network.UDPServer start
+FINE: Начало обработки команды: filter_less_than_venue
+мая 07, 2026 8:16:09 AM Network.UDPServer start
+FINE: Обработка завершена: успех=false
+мая 07, 2026 8:16:09 AM Network.UDPServer start
+INFO: Ответ отправлен клиенту /127.0.0.1:57677 | успех=false | сообщение='Ошибка: нужно указать вместимость'
+мая 07, 2026 8:16:12 AM Network.UDPServer start
+INFO: Новое подключение от: /127.0.0.1:57677
+мая 07, 2026 8:16:12 AM Network.UDPServer start
+INFO: Получен запрос: команда='filter_less_than_venue', аргумент='1'
+мая 07, 2026 8:16:12 AM Network.UDPServer start
+FINE: Начало обработки команды: filter_less_than_venue
+мая 07, 2026 8:16:12 AM Network.UDPServer start
+FINE: Обработка завершена: успех=true
+мая 07, 2026 8:16:12 AM Network.UDPServer start
+INFO: Ответ отправлен клиенту /127.0.0.1:57677 | успех=true | сообщение='Нет элементов с вместимостью меньшим, чем заданное.'
+мая 07, 2026 8:16:20 AM Network.UDPServer start
+INFO: Новое подключение от: /127.0.0.1:57677
+мая 07, 2026 8:16:20 AM Network.UDPServer start
+INFO: Получен запрос: команда='filter_less_than_venue', аргумент='1000000'
+мая 07, 2026 8:16:20 AM Network.UDPServer start
+FINE: Начало обработки команды: filter_less_than_venue
+мая 07, 2026 8:16:20 AM Network.UDPServer start
+FINE: Обработка завершена: успех=true
+мая 07, 2026 8:16:20 AM Network.UDPServer start
+INFO: Ответ отправлен клиенту /127.0.0.1:57677 | успех=true | сообщение='ok'
+мая 07, 2026 8:16:25 AM Network.UDPServer start
+INFO: Новое подключение от: /127.0.0.1:57677
+мая 07, 2026 8:16:25 AM Network.UDPServer start
+INFO: Получен запрос: команда='save'
+мая 07, 2026 8:16:25 AM Network.UDPServer start
+FINE: Начало обработки команды: save
+мая 07, 2026 8:16:26 AM Network.UDPServer start
+FINE: Обработка завершена: успех=true
+мая 07, 2026 8:16:26 AM Network.UDPServer start
+INFO: Ответ отправлен клиенту /127.0.0.1:57677 | успех=true | сообщение='Коллекция успешно сохранена в файл!'
+мая 07, 2026 8:16:27 AM Network.UDPServer start
+INFO: Новое подключение от: /127.0.0.1:57677
+мая 07, 2026 8:16:27 AM Network.UDPServer start
+INFO: Получен запрос: команда='exit'
+мая 07, 2026 8:16:27 AM Network.UDPServer start
+FINE: Начало обработки команды: exit
+мая 07, 2026 8:16:27 AM Network.UDPServer start
+FINE: Обработка завершена: успех=true
+мая 07, 2026 8:16:27 AM Network.UDPServer start
+INFO: Ответ отправлен клиенту /127.0.0.1:57677 | успех=true | сообщение='Коллекция успешно сохранена в файл!'
+мая 07, 2026 8:16:43 AM Network.UDPServer stop
+INFO: UDP server stopped
+мая 07, 2026 8:16:43 AM Network.UDPServer stop
+INFO: UDP server stopped
+мая 07, 2026 8:21:33 AM Main main
+INFO: Коллекция загружена из файла: C:\Users\fedor\IdeaProjects\laba_5\src\data.txt | элементов: 2
+мая 07, 2026 8:21:33 AM Main lambda$main$1
+INFO: Серверная консоль запущена. Команды: save, exit
+мая 07, 2026 8:21:33 AM Network.UDPServer start
+INFO: Сервер запущен на порту 5000
+мая 07, 2026 8:21:43 AM Network.UDPServer start
+INFO: Новое подключение от: /127.0.0.1:60888
+мая 07, 2026 8:21:43 AM Network.UDPServer start
+INFO: Получен запрос: команда='show'
+мая 07, 2026 8:21:43 AM Network.UDPServer start
+FINE: Начало обработки команды: show
+мая 07, 2026 8:21:43 AM Network.UDPServer start
+FINE: Обработка завершена: успех=true
+мая 07, 2026 8:21:43 AM Network.UDPServer start
+INFO: Ответ отправлен клиенту /127.0.0.1:60888 | успех=true | сообщение='ok'
+мая 07, 2026 8:21:48 AM Network.UDPServer start
+INFO: Новое подключение от: /127.0.0.1:60888
+мая 07, 2026 8:21:48 AM Network.UDPServer start
+INFO: Получен запрос: команда='add_random'
+мая 07, 2026 8:21:48 AM Network.UDPServer start
+FINE: Начало обработки команды: add_random
+мая 07, 2026 8:21:48 AM Network.UDPServer start
+FINE: Обработка завершена: успех=true
+мая 07, 2026 8:21:48 AM Network.UDPServer start
+INFO: Ответ отправлен клиенту /127.0.0.1:60888 | успех=true | сообщение='Билет с рандомными полями успешно добавлен в коллекцию!'
+мая 07, 2026 8:21:52 AM Network.UDPServer start
+INFO: Новое подключение от: /127.0.0.1:60888
+мая 07, 2026 8:21:52 AM Network.UDPServer start
+INFO: Получен запрос: команда='show'
+мая 07, 2026 8:21:52 AM Network.UDPServer start
+FINE: Начало обработки команды: show
+мая 07, 2026 8:21:52 AM Network.UDPServer start
+FINE: Обработка завершена: успех=true
+мая 07, 2026 8:21:52 AM Network.UDPServer start
+INFO: Ответ отправлен клиенту /127.0.0.1:60888 | успех=true | сообщение='ok'
+мая 07, 2026 8:21:56 AM Network.UDPServer start
+INFO: Новое подключение от: /127.0.0.1:60888
+мая 07, 2026 8:21:56 AM Network.UDPServer start
+INFO: Получен запрос: команда='info'
+мая 07, 2026 8:21:56 AM Network.UDPServer start
+FINE: Начало обработки команды: info
+мая 07, 2026 8:21:56 AM Network.UDPServer start
+FINE: Обработка завершена: успех=true
+мая 07, 2026 8:21:56 AM Network.UDPServer start
+INFO: Ответ отправлен клиенту /127.0.0.1:60888 | успех=true | сообщение='Это коллекция билетов на мероприятия Халилова Чингиза и Федорова Вячеслава. Посещение всех мероприятий добровольно-обязательное, билеты покупаем на все!! Дата создания коллекции - это дата создания самого старого билета в ней.
+Тип коллекции: class java.util.LinkedList
+Дата создания: 2026-05-07
+Количество элементов в коллекции: 3'
+мая 07, 2026 8:22:30 AM Network.UDPServer start
+INFO: Новое подключение от: /127.0.0.1:60888
+мая 07, 2026 8:22:30 AM Network.UDPServer start
+INFO: Получен запрос: команда='exit'
+мая 07, 2026 8:22:30 AM Network.UDPServer start
+FINE: Начало обработки команды: exit
+мая 07, 2026 8:22:30 AM Network.UDPServer start
+FINE: Обработка завершена: успех=true
+мая 07, 2026 8:22:30 AM Network.UDPServer start
+INFO: Ответ отправлен клиенту /127.0.0.1:60888 | успех=true | сообщение='Коллекция успешно сохранена в файл!'
+мая 07, 2026 8:22:39 AM Main lambda$main$1
+INFO: Завершение работы сервера.
+мая 07, 2026 8:22:39 AM Network.UDPServer stop
+INFO: UDP server stopped
+мая 07, 2026 8:22:39 AM Network.UDPServer stop
+INFO: UDP server stopped
+мая 07, 2026 8:25:22 AM Main main
+INFO: Коллекция загружена из файла: C:\Users\fedor\IdeaProjects\laba_5\src\data.txt | элементов: 3
+мая 07, 2026 8:25:22 AM Main lambda$main$1
+INFO: Серверная консоль запущена. Команды: save, exit
+мая 07, 2026 8:25:22 AM Network.UDPServer start
+INFO: Сервер запущен на порту 5000
+мая 07, 2026 8:25:33 AM Network.UDPServer start
+INFO: Новое подключение от: /127.0.0.1:56264
+мая 07, 2026 8:25:33 AM Network.UDPServer start
+INFO: Получен запрос: команда='show'
+мая 07, 2026 8:25:33 AM Network.UDPServer start
+FINE: Начало обработки команды: show
+мая 07, 2026 8:25:33 AM Network.UDPServer start
+FINE: Обработка завершена: успех=true
+мая 07, 2026 8:25:33 AM Network.UDPServer start
+INFO: Ответ отправлен клиенту /127.0.0.1:56264 | успех=true | сообщение='ok'
+мая 07, 2026 8:27:43 AM Main main
+INFO: Коллекция загружена из файла: C:\Users\fedor\IdeaProjects\laba_5\src\data.txt | элементов: 3
+мая 07, 2026 8:27:43 AM Main lambda$main$1
+INFO: Серверная консоль запущена. Команды: save, exit
+мая 07, 2026 8:27:43 AM Network.UDPServer start
+INFO: Сервер запущен на порту 5000
+мая 07, 2026 8:27:50 AM Network.UDPServer start
+INFO: Новое подключение от: /127.0.0.1:49386
+мая 07, 2026 8:27:50 AM Network.UDPServer start
+INFO: Получен запрос: команда='show'
+мая 07, 2026 8:27:50 AM Network.UDPServer start
+FINE: Начало обработки команды: show
+мая 07, 2026 8:27:50 AM Network.UDPServer start
+FINE: Обработка завершена: успех=true
+мая 07, 2026 8:27:50 AM Network.UDPServer start
+INFO: Ответ отправлен клиенту /127.0.0.1:49386 | успех=true | сообщение='ok'
