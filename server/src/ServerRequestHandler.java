@@ -57,12 +57,15 @@ public class ServerRequestHandler implements UDPServer.RequestHandler {
                 break;
 
             case "update":
-                if (ticket == null) {
-                    return new Response(false, "Ошибка: ticket обязателен");
-                }
                 Integer idUpdate = parseId(arg);
                 if (idUpdate == null) {
                     return new Response(false, "Ошибка: нужно указать корректный id");
+                }
+                if (idUpdate < 0 || idUpdate >= collection.size()) {
+                    return new Response(false, "Билета с таким id не существует");
+                }
+                if (ticket == null) {
+                    return new Response(true, null);
                 }
                 commandToExecute = new UpdateTicketCommand(collection, idUpdate, ticket);
                 break;

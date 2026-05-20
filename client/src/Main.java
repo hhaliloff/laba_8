@@ -8,8 +8,8 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-    private static final String SERVER_HOST = "localhost";
-    private static final int SERVER_PORT = 5000;
+    private static final String SERVER_HOST = "192.168.10.80";
+    private static final int SERVER_PORT = 32456;
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -31,7 +31,7 @@ public class Main {
 
             if (input.isBlank()) continue;
 
-            if (input.equals("exit")) {
+            if (normalizeCommand(input).equals("exit")) {
                 sendAndPrint(client, new Request("exit"));
                 running = false;
                 break;
@@ -49,6 +49,7 @@ public class Main {
     }
 
     private static boolean processCommand(String input, UDPClient client, Set<String> scriptsInProcess) {
+        input = normalizeCommand(input);
         String[] parts = input.split(" ", 2);
         String cmd = parts[0];
         String arg = parts.length > 1 ? parts[1] : null;
@@ -56,7 +57,12 @@ public class Main {
         Request request;
 
         switch (cmd) {
-            case "add":
+            case "add": {
+                Ticket ticket = Add.add();
+                request = new Request(cmd, null, ticket);
+                break;
+            }
+
             case "add_if_min": {
                 Ticket ticket = Add.add();
                 request = new Request(cmd, null, ticket);
@@ -66,6 +72,14 @@ public class Main {
             case "update": {
                 if (arg == null) {
                     System.out.println("Ошибка: нужно указать id");
+                    return true;
+                }
+                Response response = sendRequest(client, new Request(cmd, arg));
+                if (response == null) {
+                    return true;
+                }
+                if (!response.isSuccess()) {
+                    printResponse(response);
                     return true;
                 }
                 Ticket ticket = Add.add();
@@ -83,7 +97,32 @@ public class Main {
             }
 
             default:
-                request = new Request(cmd, arg);
+
+                if (cmd.equals("add_random")){
+                    int argint;
+                    if (arg == null) {
+                        argint = 1;
+                    }
+                    else{
+                        argint = Integer.parseInt(arg);
+                    }
+
+                    while (argint >= 100000){
+                        sendAndPrint(client, new Request(cmd, "100000"));
+                        argint = argint - 100000;
+                    }
+
+                    if (argint > 0){
+                        request = new Request(cmd, String.valueOf(argint));
+                    }
+                    else{
+                        return true;
+                    }
+
+                }
+                else {
+                    request = new Request(cmd, arg);
+                }
                 break;
         }
 
@@ -112,16 +151,30 @@ public class Main {
     }
 
     private static void sendAndPrint(UDPClient client, Request request) {
+        printResponse(sendRequest(client, request));
+    }
+
+    private static Response sendRequest(UDPClient client, Request request) {
         try {
-            Response response = client.sendRequest(request);
-            if (response != null && response.getMessage() != null) {
-                System.out.println(response.getMessage());
-            }
-            if (response != null && response.getTickets() != null) {
-                response.getTickets().forEach(System.out::println);
-            }
+            return client.sendRequest(request);
         } catch (IOException e) {
             System.out.println("Ошибка при отправке запроса: " + e.getMessage());
+            return null;
         }
     }
+
+    private static void printResponse(Response response) {
+        if (response != null && response.getMessage() != null) {
+            System.out.println(response.getMessage());
+        }
+        if (response != null && response.getTickets() != null) {
+            response.getTickets().forEach(System.out::println);
+        }
+    }
+
+    private static String normalizeCommand(String input) {
+        String[] parts = input.split(" ", 2);
+        return parts[0].toLowerCase() + (parts.length > 1 ? " " + parts[1] : "");
+    }
 }
+

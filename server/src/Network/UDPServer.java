@@ -10,6 +10,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class UDPServer {
+    private static final String UDP_RESPONSE_TOO_LARGE = "Ошибка: размер ответа превышает допустимый для UDP";
+
     public interface RequestHandler {
         Response handle(Request request);
     }
@@ -49,28 +51,28 @@ public class UDPServer {
             try {
                 socket.receive(packet);
 
-                // Новое подключение
-                logger.info("Новое подключение от: " + packet.getAddress() + ":" + packet.getPort());
-
                 byte[] requestBytes = Arrays.copyOfRange(
                         packet.getData(),
                         packet.getOffset(),
                         packet.getOffset() + packet.getLength()
                 );
+                logger.info("Новое подключение от: " + packet.getAddress() + ":" + packet.getPort());
 
-                // Чтение запроса
                 Request request = Serializer.deserialize(requestBytes, Request.class);
                 logger.info("Получен запрос: команда='" + request.getCommand() + "'"
                         + (request.getArg() != null ? ", аргумент='" + request.getArg() + "'" : "")
                         + (request.getTicket() != null ? ", билет передан" : ""));
 
-                // Обработка
                 logger.fine("Начало обработки команды: " + request.getCommand());
                 Response response = handler.handle(request);
                 logger.fine("Обработка завершена: успех=" + response.isSuccess());
 
-                // Отправка ответа
                 byte[] responseBytes = Serializer.serialize(response);
+                if (responseBytes.length > bufferSize) {
+                    logger.warning("Ответ превышает допустимый размер UDP: " + responseBytes.length + " байт");
+                    response = new Response(false, UDP_RESPONSE_TOO_LARGE);
+                    responseBytes = Serializer.serialize(response);
+                }
                 DatagramPacket reply = new DatagramPacket(
                         responseBytes,
                         responseBytes.length,

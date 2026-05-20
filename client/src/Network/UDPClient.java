@@ -8,7 +8,7 @@ import java.nio.channels.*;
 public class UDPClient {
 
     private static final int BUFFER_SIZE = 65507;
-    private static final int TIMEOUT_MS = 2000;
+    private static final int TIMEOUT_MS = 60000;
     private static final int MAX_RETRIES = 3;
 
     private final InetSocketAddress serverAddress;
@@ -23,6 +23,9 @@ public class UDPClient {
 
     public Response sendRequest(Request request) throws IOException {
         byte[] data = Serializer.serialize(request);
+        if (data.length > BUFFER_SIZE) {
+            throw new IOException("Размер запроса превышает допустимый для UDP");
+        }
         ByteBuffer sendBuffer = ByteBuffer.wrap(data);
 
         for (int attempt = 1; attempt <= MAX_RETRIES; attempt++) {
@@ -47,10 +50,9 @@ public class UDPClient {
     private Response waitForResponse() throws IOException {
         try (Selector selector = Selector.open()) {
             channel.register(selector, SelectionKey.OP_READ);
-
             int ready = selector.select(TIMEOUT_MS);
             if (ready == 0) {
-                return null; // таймаут
+                return null;
             }
 
             selector.selectedKeys().clear();
@@ -63,7 +65,6 @@ public class UDPClient {
             receiveBuffer.get(bytes);
 
             return Serializer.deserialize(bytes, Response.class);
-
         } catch (ClassNotFoundException e) {
             throw new IOException("Ошибка десериализации ответа", e);
         }

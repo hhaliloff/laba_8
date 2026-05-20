@@ -252,3 +252,107 @@ FINE: Начало обработки команды: show
 FINE: Обработка завершена: успех=true
 мая 07, 2026 8:27:50 AM Network.UDPServer start
 INFO: Ответ отправлен клиенту /127.0.0.1:49386 | успех=true | сообщение='ok'
+May 07, 2026 4:02:41 PM Main main
+SEVERE: Переменная окружения TICKETS_FILE не задана. Завершение работы.
+May 07, 2026 4:04:40 PM Main main
+SEVERE: Переменная окружения TICKETS_FILE не задана. Завершение работы.
+May 07, 2026 4:06:11 PM Main main
+SEVERE: Переменная окружения TICKETS_FILE не задана. Завершение работы.
+May 07, 2026 4:07:22 PM Main main
+INFO: Коллекция загружена из файла: /Users/cingizhalilov/IdeaProjects/laba_6/server/ticket | элементов: 0
+May 07, 2026 4:07:22 PM Main lambda$main$1
+INFO: Серверная консоль запущена. Команды: save, exit
+May 07, 2026 4:07:22 PM Network.UDPServer start
+INFO: Сервер запущен на порту 5000
+May 07, 2026 4:08:26 PM Network.UDPServer start
+INFO: Новое подключение от: /127.0.0.1:60767
+May 07, 2026 4:08:26 PM Network.UDPServer start
+INFO: Получен запрос: команда='add', билет передан
+May 07, 2026 4:08:26 PM Network.UDPServer start
+FINE: Начало обработки команды: add
+May 07, 2026 4:08:26 PM Network.UDPServer start
+FINE: Обработка завершена: успех=true
+May 07, 2026 4:08:26 PM Network.UDPServer start
+INFO: Ответ отправлен клиенту /127.0.0.1:60767 | успех=true | сообщение='Билет успешно добавлен в коллекцию!'
+May 07, 2026 4:08:51 PM Network.UDPServer start
+INFO: Новое подключение от: /127.0.0.1:60767
+May 07, 2026 4:08:51 PM Network.UDPServer start
+INFO: Получен запрос: команда='show'
+May 07, 2026 4:08:51 PM Network.UDPServer start
+FINE: Начало обработки команды: show
+May 07, 2026 4:08:51 PM Network.UDPServer start
+FINE: Обработка завершена: успех=true
+May 07, 2026 4:08:51 PM Network.UDPServer start
+INFO: Ответ отправлен клиенту /127.0.0.1:60767 | успех=true | сообщение='ok'
+May 07, 2026 4:09:08 PM Network.UDPServer start
+INFO: Новое подключение от: /127.0.0.1:60767
+May 07, 2026 4:09:08 PM Network.UDPServer start
+INFO: Получен запрос: команда='\save'
+May 07, 2026 4:09:08 PM Network.UDPServer start
+FINE: Начало обработки команды: \save
+May 07, 2026 4:09:08 PM Network.UDPServer start
+FINE: Обработка завершена: успех=false
+May 07, 2026 4:09:08 PM Network.UDPServer start
+INFO: Ответ отправлен клиенту /127.0.0.1:60767 | успех=false | сообщение='Неизвестная команда: \save'
+May 07, 2026 4:09:13 PM Network.UDPServer start
+INFO: Новое подключение от: /127.0.0.1:60767
+May 07, 2026 4:09:13 PM Network.UDPServer start
+INFO: Получен запрос: команда='save'
+May 07, 2026 4:09:13 PM Network.UDPServer start
+FINE: Начало обработки команды: save
+May 07, 2026 4:09:13 PM Network.UDPServer start
+FINE: Обработка завершена: успех=true
+May 07, 2026 4:09:13 PM Network.UDPServer start
+INFO: Ответ отправлен клиенту /127.0.0.1:60767 | успех=true | сообщение='Коллекция успешно сохранена в файл!'
+May 07, 2026 4:32:29 PM Main main
+INFO: Коллекция загружена из файла: /Users/cingizhalilov/IdeaProjects/laba_6/server/ticket | элементов: 1
+May 07, 2026 4:32:29 PM Main lambda$main$1
+INFO: Серверная консоль запущена.
+May 07, 2026 4:32:29 PM Network.UDPServer start
+INFO: Сервер запущен на порту 5000
+May 07, 2026 4:32:56 PM Network.UDPServer start
+INFO: Новое подключение от: /127.0.0.1:52184
+May 07, 2026 4:32:56 PM Network.UDPServer start
+INFO: Получен запрос: команда='add_random'
+May 07, 2026 4:32:56 PM Network.UDPServer start
+FINE: Начало обработки команды: add_random
+May 07, 2026 4:32:56 PM Network.UDPServer start
+FINE: Обработка завершена: успех=true
+May 07, 2026 4:32:56 PM Network.UDPServer start
+INFO: Ответ отправлен клиенту /127.0.0.1:52184 | успех=true | сообщение='Билет с рандомными полями успешно добавлен в коллекцию!'
+May 07, 2026 4:33:01 PM Network.UDPServer start
+INFO: Новое подключение от: /127.0.0.1:52184
+May 07, 2026 4:33:01 PM Network.UDPServer start
+INFO: Получен запрос: команда='add_random'
+May 07, 2026 4:33:01 PM Network.UDPServer start
+FINE: Начало обработки команды: add_random
+May 07, 2026 4:33:01 PM Network.UDPServer start
+FINE: Обработка завершена: успех=true
+May 07, 2026 4:33:01 PM Network.UDPServer start
+INFO: Ответ отправлен клиенту /127.0.0.1:52184 | успех=true | сообщение='Билет с рандомными полями успешно добавлен в коллекцию!'
+May 07, 2026 4:33:04 PM Network.UDPServer start
+INFO: Новое подключение от: /127.0.0.1:52184
+May 07, 2026 4:33:04 PM Network.UDPServer start
+INFO: Получен запрос: команда='save'
+May 07, 2026 4:33:04 PM Network.UDPServer start
+FINE: Начало обработки команды: save
+May 07, 2026 4:33:04 PM Network.UDPServer start
+FINE: Обработка завершена: успех=true
+May 07, 2026 4:33:04 PM Network.UDPServer start
+INFO: Ответ отправлен клиенту /127.0.0.1:52184 | успех=true | сообщение='Коллекция успешно сохранена в файл!'
+May 07, 2026 4:33:27 PM Network.UDPServer start
+INFO: Новое подключение от: /127.0.0.1:52184
+May 07, 2026 4:33:27 PM Network.UDPServer start
+INFO: Получен запрос: команда='exit'
+May 07, 2026 4:33:27 PM Network.UDPServer start
+FINE: Начало обработки команды: exit
+May 07, 2026 4:33:27 PM Network.UDPServer start
+FINE: Обработка завершена: успех=true
+May 07, 2026 4:33:27 PM Network.UDPServer start
+INFO: Ответ отправлен клиенту /127.0.0.1:52184 | успех=true | сообщение='Коллекция успешно сохранена в файл!'
+May 07, 2026 5:04:33 PM Main main
+INFO: Коллекция загружена из файла: /Users/cingizhalilov/IdeaProjects/laba_6/server/ticket | элементов: 3
+May 07, 2026 5:04:33 PM Main lambda$main$1
+INFO: Серверная консоль запущена.
+May 07, 2026 5:04:33 PM Network.UDPServer start
+INFO: Сервер запущен на порту 32456

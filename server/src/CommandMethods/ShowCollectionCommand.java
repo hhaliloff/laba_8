@@ -23,6 +23,6 @@ public class ShowCollectionCommand implements Command {
         List<Ticket> sorted = collection.stream()
                 .sorted(Comparator.comparing(Ticket::getName))
                 .collect(Collectors.toList());
-        return new Response(true, "ok", sorted);
+        return new Response(true, null, sorted);
     }
 }

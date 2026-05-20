@@ -27,6 +27,6 @@ public class FilterLessThanVenueCommand implements Command {
         if (filteredTickets.isEmpty()) {
             return new Response(true, "Нет элементов с вместимостью меньшим, чем заданное.", filteredTickets);
         }
-        return new Response(true, "ok", filteredTickets);
+        return new Response(true, null, filteredTickets);
     }
 }

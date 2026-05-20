@@ -27,6 +27,6 @@ public class FilterGreaterThanVenueCommand implements Command {
         if (filteredTickets.isEmpty()) {
             return new Response(true, "Нет элементов с вместимостью большим, чем заданное.", filteredTickets);
         }
-        return new Response(true, "ok", filteredTickets);
+        return new Response(true, null, filteredTickets);
     }
 }

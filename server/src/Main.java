@@ -9,7 +9,7 @@ import java.util.logging.*;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        int port = 5000;
+        int port = 32456;
 
         // Настройка логгера
         Logger logger = Logger.getLogger(UDPServer.class.getName());
@@ -64,7 +64,7 @@ public class Main {
         // Серверная консоль
         Thread consoleThread = new Thread(() -> {
             Scanner consoleScanner = new Scanner(System.in);
-            logger.info("Серверная консоль запущена. Команды: save, exit");
+            logger.info("Серверная консоль запущена.");
             while (true) {
                 String input = consoleScanner.nextLine().trim();
                 if (input.equals("save")) {

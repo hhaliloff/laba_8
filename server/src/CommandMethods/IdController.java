@@ -6,12 +6,13 @@ package CommandMethods;
 import CollectionClasses.Ticket;
 
 import java.util.LinkedList;
-import java.util.stream.IntStream;
 
 public class IdController {
     public static LinkedList<Ticket> ChangeIds(LinkedList<Ticket> collection) {
-        IntStream.range(0, collection.size())
-                .forEach(i -> collection.get(i).setId(i));
+        int id = 0;
+        for (Ticket ticket : collection) {
+            ticket.setId(id++);
+        }
         return collection;
     }
 }
