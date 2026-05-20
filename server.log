@@ -356,3 +356,9 @@ May 07, 2026 5:04:33 PM Main lambda$main$1
 INFO: Серверная консоль запущена.
 May 07, 2026 5:04:33 PM Network.UDPServer start
 INFO: Сервер запущен на порту 32456
+May 20, 2026 6:26:57 PM Main main
+INFO: Коллекция загружена из файла: /Users/cingizhalilov/IdeaProjects/laba_6/server/ticket | элементов: 3
+May 20, 2026 6:26:57 PM Main lambda$main$1
+INFO: Серверная консоль запущена.
+May 20, 2026 6:26:57 PM Network.UDPServer start
+INFO: Сервер запущен на порту 32456

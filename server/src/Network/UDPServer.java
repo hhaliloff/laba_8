@@ -4,13 +4,13 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.SocketException;
+import java.nio.ByteBuffer;
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class UDPServer {
-    private static final String UDP_RESPONSE_TOO_LARGE = "Ошибка: размер ответа превышает допустимый для UDP";
 
     public interface RequestHandler {
         Response handle(Request request);
@@ -42,6 +42,7 @@ public class UDPServer {
             return;
         }
         socket = new DatagramSocket(port);
+        socket.setSendBufferSize(4 * 1024 * 1024);
         running = true;
         logger.info("Сервер запущен на порту " + port);
 
@@ -68,18 +69,26 @@ public class UDPServer {
                 logger.fine("Обработка завершена: успех=" + response.isSuccess());
 
                 byte[] responseBytes = Serializer.serialize(response);
-                if (responseBytes.length > bufferSize) {
-                    logger.warning("Ответ превышает допустимый размер UDP: " + responseBytes.length + " байт");
-                    response = new Response(false, UDP_RESPONSE_TOO_LARGE);
-                    responseBytes = Serializer.serialize(response);
+                int chunkSize = 8000;
+                int total = (responseBytes.length + chunkSize - 1) / chunkSize;
+                if (total == 0) total = 1;
+                for (int i = 0; i < total; i++) {
+                    int from = i * chunkSize;
+                    int to = Math.min(from + chunkSize, responseBytes.length);
+                    byte[] chunk = new byte[8 + (to - from)];
+                    ByteBuffer header = ByteBuffer.wrap(chunk, 0, 8);
+                    header.putInt(i);
+                    header.putInt(total);
+                    System.arraycopy(responseBytes, from, chunk, 8, to - from);
+                    DatagramPacket reply = new DatagramPacket(
+                            chunk,
+                            chunk.length,
+                            packet.getAddress(),
+                            packet.getPort()
+                    );
+                    socket.send(reply);
+                    try { Thread.sleep(1); } catch (InterruptedException ignored) {}
                 }
-                DatagramPacket reply = new DatagramPacket(
-                        responseBytes,
-                        responseBytes.length,
-                        packet.getAddress(),
-                        packet.getPort()
-                );
-                socket.send(reply);
                 logger.info("Ответ отправлен клиенту " + packet.getAddress() + ":" + packet.getPort()
                         + " | успех=" + response.isSuccess()
                         + " | сообщение='" + response.getMessage() + "'");

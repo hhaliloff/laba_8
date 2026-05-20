@@ -17,6 +17,7 @@ public class UDPClient {
     public UDPClient(String host, int port) throws IOException {
         this.serverAddress = new InetSocketAddress(host, port);
         this.channel = DatagramChannel.open();
+        this.channel.socket().setReceiveBufferSize(4 * 1024 * 1024);
         this.channel.configureBlocking(false);
         this.channel.connect(serverAddress);
     }
@@ -50,21 +51,50 @@ public class UDPClient {
     private Response waitForResponse() throws IOException {
         try (Selector selector = Selector.open()) {
             channel.register(selector, SelectionKey.OP_READ);
-            int ready = selector.select(TIMEOUT_MS);
-            if (ready == 0) {
-                return null;
+
+            byte[][] chunks = null;
+            int total = -1;
+            int received = 0;
+
+            while (true) {
+                int ready = selector.select(TIMEOUT_MS);
+                if (ready == 0) {
+                    return null;
+                }
+                selector.selectedKeys().clear();
+
+                ByteBuffer receiveBuffer = ByteBuffer.allocate(BUFFER_SIZE);
+                channel.receive(receiveBuffer);
+                receiveBuffer.flip();
+
+                int index = receiveBuffer.getInt();
+                int t = receiveBuffer.getInt();
+                byte[] payload = new byte[receiveBuffer.remaining()];
+                receiveBuffer.get(payload);
+
+                if (chunks == null) {
+                    total = t;
+                    chunks = new byte[total][];
+                }
+                if (chunks[index] == null) {
+                    chunks[index] = payload;
+                    received++;
+                }
+                if (received == total) {
+                    break;
+                }
             }
 
-            selector.selectedKeys().clear();
+            int totalLen = 0;
+            for (byte[] c : chunks) totalLen += c.length;
+            byte[] full = new byte[totalLen];
+            int pos = 0;
+            for (byte[] c : chunks) {
+                System.arraycopy(c, 0, full, pos, c.length);
+                pos += c.length;
+            }
 
-            ByteBuffer receiveBuffer = ByteBuffer.allocate(BUFFER_SIZE);
-            channel.receive(receiveBuffer);
-            receiveBuffer.flip();
-
-            byte[] bytes = new byte[receiveBuffer.remaining()];
-            receiveBuffer.get(bytes);
-
-            return Serializer.deserialize(bytes, Response.class);
+            return Serializer.deserialize(full, Response.class);
         } catch (ClassNotFoundException e) {
             throw new IOException("Ошибка десериализации ответа", e);
         }

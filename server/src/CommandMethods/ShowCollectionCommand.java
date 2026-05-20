@@ -22,6 +22,7 @@ public class ShowCollectionCommand implements Command {
 
         List<Ticket> sorted = collection.stream()
                 .sorted(Comparator.comparing(Ticket::getName))
+                .limit(100)
                 .collect(Collectors.toList());
         return new Response(true, null, sorted);
     }

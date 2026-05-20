@@ -107,18 +107,19 @@ public class Main {
                         argint = Integer.parseInt(arg);
                     }
 
+                    int total = argint;
+
                     while (argint >= 100000){
-                        sendAndPrint(client, new Request(cmd, "100000"));
+                        sendRequest(client, new Request(cmd, "100000"));
                         argint = argint - 100000;
                     }
 
                     if (argint > 0){
-                        request = new Request(cmd, String.valueOf(argint));
-                    }
-                    else{
-                        return true;
+                        sendRequest(client, new Request(cmd, String.valueOf(argint)));
                     }
 
+                    System.out.println("Добавлено билетов: " + total);
+                    return true;
                 }
                 else {
                     request = new Request(cmd, arg);
